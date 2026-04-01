@@ -433,12 +433,37 @@ h1, h2, h3, .hero__heading {
 
 .form input[type="date"] {
   cursor: pointer;
+  color-scheme: dark;
+}
+
+/* Date picker calendar icon - visible on dark bg */
+.form input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1) brightness(2);
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.form input[type="date"]::-webkit-calendar-picker-indicator:hover {
+  opacity: 1;
 }
 
 /* Consistent height for date and select side by side */
 .form input[type="date"],
 .form select {
   height: 3.2rem;
+}
+
+/* Dropdown/select dark themed options */
+.form select option {
+  background: #0B1F1C;
+  color: #AABBB7;
+  padding: 0.5rem;
+}
+
+.form select option:checked,
+.form select option:hover {
+  background: #132E2A;
+  color: #FFFFFF;
 }
 
 .form input:hover,
