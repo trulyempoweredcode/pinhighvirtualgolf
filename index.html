@@ -531,7 +531,7 @@
       </div>
     </div>
     <div class="container footer__bottom">
-      <p class="footer__copyright">&copy; 2025 Pin High Virtual Golf. All rights reserved.</p>
+      <p class="footer__copyright">&copy; <span id="copyright-year">2026</span> Pin High Virtual Golf. All rights reserved.</p>
       <div class="footer__legal">
         <a href="privacy.html">Privacy Policy</a>
         <a href="cookies-policy.html">Cookie Policy</a>
@@ -572,6 +572,12 @@
 
   <script src="js/main.js"></script>
   <script>
+    /* === Auto-update copyright year === */
+    (function() {
+      var el = document.getElementById('copyright-year');
+      if (el) el.textContent = new Date().getFullYear();
+    })();
+
     /* === Hero Parallax Scroll === */
     (function() {
       var hero = document.querySelector('.hero--parallax');

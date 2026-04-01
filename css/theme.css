@@ -727,10 +727,6 @@ h1, h2, h3, .hero__heading {
   .sticky-cta {
     display: block;
   }
-  /* Add padding to footer so sticky CTA doesn't overlap */
-  .footer {
-    padding-bottom: 5rem;
-  }
 }
 
 /* Opening hours table */
@@ -954,14 +950,45 @@ h1, h2, h3, .hero__heading {
   right: 1.5rem;
 }
 
-/* Site credit */
+/* Site credit - distinct black background from footer */
 .site-credit {
-  background: var(--color-bg-dark);
+  background: #000000;
   color: var(--color-text-light);
+  padding-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+  .site-credit {
+    padding-bottom: 5rem; /* space for sticky CTA */
+  }
 }
 
 .site-credit a {
   color: var(--color-primary);
+}
+
+/* Testimonials - centered on mobile */
+@media (max-width: 768px) {
+  .testimonial--card {
+    text-align: center;
+  }
+
+  .testimonial__stars {
+    justify-content: center;
+  }
+
+  .testimonial__author {
+    text-align: center;
+  }
+}
+
+/* Gallery images - consistent height on mobile */
+@media (max-width: 768px) {
+  .bento--gallery .bento__item--hero,
+  .bento--gallery .bento__item--small,
+  .bento--gallery .bento__item--wide {
+    min-height: 250px;
+  }
 }
 
 /* Section subtitle on dark bg */
