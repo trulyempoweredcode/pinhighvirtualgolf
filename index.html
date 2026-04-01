@@ -90,7 +90,7 @@
   <main id="main">
 
     <!-- SECTION: hero -->
-    <section class="hero hero--image golf-dimples" style="background-image: linear-gradient(to bottom, rgba(11,31,28,0.45) 0%, rgba(11,31,28,0.7) 100%), url('images/hero.jpg');">
+    <section class="hero hero--image hero--parallax" style="background-image: linear-gradient(to bottom, rgba(11,31,28,0.45) 0%, rgba(11,31,28,0.7) 100%), url('images/hero.jpg');">
       <div class="container hero__inner" style="flex-direction: column; align-items: center; text-align: center; justify-content: center; min-height: 100vh; min-height: 100svh;">
         <div class="hero__content" style="max-width: 900px; align-items: center;">
           <span class="trackman-badge">
@@ -575,6 +575,25 @@
 
   <script src="js/main.js"></script>
   <script>
+    /* === Hero Parallax Scroll === */
+    (function() {
+      var hero = document.querySelector('.hero--parallax');
+      var heroContent = hero ? hero.querySelector('.hero__content') : null;
+      if (!hero || !heroContent) return;
+      var heroHeight = hero.offsetHeight;
+
+      function onScroll() {
+        var scrollY = window.scrollY || window.pageYOffset;
+        if (scrollY > heroHeight) return; // stop processing once past hero
+        // Text moves up slower than scroll (parallax feel)
+        var offset = scrollY * 0.35;
+        var opacity = 1 - (scrollY / (heroHeight * 0.8));
+        heroContent.style.transform = 'translateY(' + offset + 'px)';
+        heroContent.style.opacity = Math.max(opacity, 0);
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+    })();
+
     /* === Sticky Mobile CTA === */
     (function() {
       var stickyCta = document.getElementById('sticky-cta');

@@ -97,6 +97,36 @@ h1, h2, h3, .hero__heading {
   min-height: 100svh;
 }
 
+/* Parallax hero - background fixed, content scrolls over it */
+.hero--parallax {
+  background-attachment: fixed;
+  background-position: center center;
+  background-size: cover;
+}
+
+/* Disable parallax on mobile/tablet (performance + iOS doesn't support background-attachment:fixed) */
+@media (max-width: 1024px) {
+  .hero--parallax {
+    background-attachment: scroll;
+  }
+}
+
+/* Parallax text float effect - content fades/rises as you scroll */
+.hero--parallax .hero__content {
+  animation: heroFloatIn 1s ease-out both;
+}
+
+@keyframes heroFloatIn {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* Hero button overrides - must match .hero--image specificity from components.css */
 .hero--image .btn--primary {
   background-color: var(--color-primary);
