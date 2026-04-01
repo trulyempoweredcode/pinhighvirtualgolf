@@ -984,6 +984,46 @@ h1, h2, h3, .hero__heading {
   }
 }
 
+/* Gap between Trackman badge and hero heading */
+.trackman-badge {
+  margin-bottom: 1.5rem;
+}
+
+/* Hero ticks - centered on mobile, wrap properly */
+.hero__ticks {
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem 1rem;
+}
+
+/* Info band - stack title above text on mobile */
+@media (max-width: 768px) {
+  .info-band__item {
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .info-band__item-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .info-band__title {
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+
+  .info-band__text {
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+}
+
 /* Trackman badge */
 .trackman-badge {
   display: inline-flex;
