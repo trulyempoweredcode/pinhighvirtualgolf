@@ -1,0 +1,762 @@
+/* =============================================
+   THEME: Pin High Virtual Golf
+   Dark, premium sports-entertainment venue
+   Font Pairing: Barlow Condensed (headings) + Inter (body)
+   ============================================= */
+
+/* --- Google Fonts --- */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700&family=Inter:wght@400;500;600&display=swap');
+
+/* --- Theme Variables --- */
+:root {
+  /* Colour Palette - derived from Pin High flyer */
+  --color-primary: #00C9A7;
+  --color-primary-light: #33D4B8;
+  --color-primary-dark: #00A88C;
+  --color-secondary: #1A4A44;
+  --color-secondary-light: #245C55;
+  --color-secondary-dark: #0D2E2A;
+  --color-accent: #00E5BE;
+  --color-accent-light: #66F0D8;
+
+  --color-bg: #0B1F1C;
+  --color-bg-alt: #0F2A26;
+  --color-bg-dark: #071614;
+  --color-surface: #132E2A;
+  --color-surface-alt: #1A3D37;
+
+  --color-text: #D0E8E3;
+  --color-text-light: #8BAFA8;
+  --color-text-inverse: #0B1F1C;
+  --color-text-heading: #FFFFFF;
+
+  --color-border: #1E4D46;
+  --color-border-light: #245C55;
+
+  --color-success: #00C9A7;
+  --color-error: #FF6B6B;
+
+  /* Typography */
+  --font-heading: 'Bebas Neue', 'Barlow Condensed', 'Impact', 'Arial Narrow', sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* --- Golf ball dimple texture (CSS pattern) --- */
+.golf-dimple-bg {
+  background-color: var(--color-bg);
+  background-image:
+    radial-gradient(circle at 50% 50%, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.03) 40%, transparent 40%),
+    radial-gradient(circle at 0% 0%, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.03) 40%, transparent 40%),
+    radial-gradient(circle at 100% 0%, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.03) 40%, transparent 40%),
+    radial-gradient(circle at 0% 100%, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.03) 40%, transparent 40%),
+    radial-gradient(circle at 100% 100%, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.03) 40%, transparent 40%);
+  background-size: 30px 30px;
+}
+
+/* Subtle dimple on all dark sections by default */
+.section,
+.section--alt {
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* --- Dark theme global overrides --- */
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Make headings uppercase and bold for sports feel */
+h1, h2, h3, .hero__heading {
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  font-weight: 800;
+}
+
+/* Section labels - bright green pill style */
+.section-label {
+  color: var(--color-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-weight: 700;
+  font-family: var(--font-heading);
+}
+
+/* Hero overrides for full-impact */
+.hero--image {
+  min-height: 100vh;
+  min-height: 100svh;
+}
+
+.hero--image .hero__heading {
+  font-size: clamp(3.2rem, 10vw, 7.5rem);
+  line-height: 1;
+  font-weight: 400; /* Bebas Neue only has 400 weight but renders bold */
+  letter-spacing: 0.04em;
+}
+
+.hero--image .hero__text {
+  font-size: var(--text-lg);
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 600px;
+}
+
+/* Info band - dark surface with green accents */
+.info-band--primary {
+  background: var(--color-surface);
+  border-top: 3px solid var(--color-primary);
+  border-bottom: 3px solid var(--color-primary);
+}
+
+.info-band__icon {
+  color: var(--color-primary);
+}
+
+.info-band__title {
+  color: #FFFFFF;
+}
+
+.info-band__text {
+  color: var(--color-text-light);
+}
+
+/* Cards on dark background */
+.card--service,
+.card--feature {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+}
+
+.card--service:hover,
+.card--feature:hover {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 30px rgba(0, 201, 167, 0.15);
+}
+
+.card__icon {
+  color: var(--color-primary);
+}
+
+.card__title {
+  color: #FFFFFF;
+}
+
+/* Icon boxes */
+.icon-box {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+}
+
+.icon-box:hover {
+  border-color: var(--color-primary);
+}
+
+.icon-box__icon {
+  color: var(--color-primary);
+}
+
+/* Pricing cards */
+.pricing-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+}
+
+.pricing-card--featured {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 40px rgba(0, 201, 167, 0.2);
+}
+
+.pricing-card--featured .pricing-card__badge {
+  background: var(--color-primary);
+  color: var(--color-text-inverse);
+}
+
+.pricing-card__price {
+  color: var(--color-primary);
+}
+
+.pricing-card__name {
+  color: #FFFFFF;
+}
+
+/* Angled accent bar - matches flyer's geometric green bars */
+.section--angled {
+  position: relative;
+  clip-path: polygon(0 3vw, 100% 0, 100% calc(100% - 3vw), 0 100%);
+  padding-top: calc(3vw + 3rem);
+  padding-bottom: calc(3vw + 3rem);
+}
+
+@media (max-width: 768px) {
+  .section--angled {
+    clip-path: polygon(0 2vw, 100% 0, 100% calc(100% - 2vw), 0 100%);
+    padding-top: calc(2vw + 2rem);
+    padding-bottom: calc(2vw + 2rem);
+  }
+}
+
+/* Green accent stripe divider (like the flyer's horizontal bars) */
+.accent-stripe {
+  height: 4px;
+  background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+  border: none;
+  margin: 0;
+}
+
+/* CTA banner */
+.cta-banner {
+  background: linear-gradient(135deg, var(--color-secondary-dark), var(--color-secondary));
+  border-top: 3px solid var(--color-primary);
+  border-bottom: 3px solid var(--color-primary);
+  background-image:
+    radial-gradient(circle, rgba(0,201,167,0.05) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.cta-banner h2 {
+  color: #FFFFFF;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+}
+
+.cta-banner p {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: var(--text-lg);
+}
+
+/* Sections */
+.section--alt {
+  background-color: var(--color-bg-alt);
+}
+
+.section--dark {
+  background-color: var(--color-bg-dark);
+}
+
+/* Testimonials */
+.testimonial--card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+}
+
+.testimonial__quote {
+  color: var(--color-text);
+}
+
+.testimonial__author {
+  color: #FFFFFF;
+}
+
+.testimonial__stars svg {
+  fill: var(--color-primary);
+}
+
+/* Accordion / FAQ */
+.accordion__trigger {
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 1rem;
+}
+
+.accordion__trigger svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  min-width: 1.5rem;
+  color: var(--color-primary);
+  transition: transform 0.3s ease;
+}
+
+.accordion__trigger[aria-expanded="true"] svg {
+  transform: rotate(180deg);
+}
+
+.accordion__body {
+  color: var(--color-text);
+}
+
+.faq-item {
+  border-color: var(--color-border);
+}
+
+/* Forms on dark background */
+.form input,
+.form select,
+.form textarea {
+  background: var(--color-surface-alt);
+  border-color: var(--color-border);
+  color: #FFFFFF;
+}
+
+.form input:focus,
+.form select:focus,
+.form textarea:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(0, 201, 167, 0.2);
+}
+
+.form input::placeholder,
+.form textarea::placeholder {
+  color: var(--color-text-light);
+}
+
+.form label {
+  color: var(--color-text);
+}
+
+/* Buttons */
+.btn--primary {
+  background: var(--color-primary);
+  color: var(--color-text-inverse);
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+}
+
+.btn--primary:hover {
+  background: var(--color-accent);
+  color: var(--color-text-inverse);
+}
+
+.btn--secondary {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+}
+
+.btn--secondary:hover {
+  background: var(--color-primary);
+  color: var(--color-text-inverse);
+}
+
+.btn--accent {
+  background: var(--color-primary);
+  color: var(--color-text-inverse);
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+}
+
+.btn--accent:hover {
+  background: #FFFFFF;
+  color: var(--color-bg);
+}
+
+/* Nav on dark background */
+.nav {
+  background: var(--color-bg-dark);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.nav__name {
+  color: #FFFFFF;
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.nav__title {
+  color: var(--color-primary);
+}
+
+.nav__link {
+  color: var(--color-text);
+}
+
+.nav__link:hover,
+.nav__link--active {
+  color: var(--color-primary);
+}
+
+.nav__mobile {
+  background: var(--color-bg-dark);
+}
+
+.nav-scroll {
+  background: var(--color-bg-dark);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.nav-scroll__name {
+  color: #FFFFFF;
+}
+
+/* Footer */
+.footer {
+  background: var(--color-bg-dark);
+  border-top: 3px solid var(--color-primary);
+}
+
+.footer__brand-name {
+  color: #FFFFFF;
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+}
+
+.footer__heading {
+  color: var(--color-primary);
+}
+
+.footer__link {
+  color: var(--color-text-light);
+}
+
+.footer__link:hover {
+  color: var(--color-primary);
+}
+
+.footer__contact-item {
+  color: var(--color-text);
+}
+
+.footer__contact-item a {
+  color: var(--color-text);
+}
+
+.footer__contact-item a:hover {
+  color: var(--color-primary);
+}
+
+.footer__bottom {
+  border-top-color: var(--color-border);
+  color: var(--color-text-light);
+}
+
+.footer__legal a {
+  color: var(--color-text-light);
+}
+
+/* Cookie banner */
+.cookie-banner {
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+}
+
+/* Back to top */
+.back-to-top {
+  background: var(--color-primary);
+  color: var(--color-text-inverse);
+}
+
+/* Gallery grid - enhanced for large visuals */
+.gallery-grid {
+  gap: 0.5rem;
+}
+
+.gallery-item img {
+  border-radius: var(--radius-md);
+}
+
+/* Bento gallery enhancements for venue photos */
+.bento {
+  gap: 0.5rem;
+}
+
+.bento__item {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+/* ===== CUSTOM COMPONENTS FOR PIN HIGH ===== */
+
+/* Sticky mobile CTA */
+.sticky-cta {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  padding: 0.75rem 1rem;
+  background: var(--color-bg-dark);
+  border-top: 2px solid var(--color-primary);
+  text-align: center;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+
+.sticky-cta--visible {
+  transform: translateY(0);
+}
+
+.sticky-cta .btn {
+  width: 100%;
+  max-width: 400px;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+  .sticky-cta {
+    display: block;
+  }
+  /* Add padding to footer so sticky CTA doesn't overlap */
+  .footer {
+    padding-bottom: 5rem;
+  }
+}
+
+/* Opening hours table */
+.hours-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.hours-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-text);
+}
+
+.hours-table td:first-child {
+  font-weight: 600;
+  color: #FFFFFF;
+}
+
+.hours-table tr:last-child td {
+  border-bottom: none;
+}
+
+.hours-table .hours-table__open {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.hours-table .hours-table__closed {
+  color: var(--color-text-light);
+  font-style: italic;
+}
+
+/* Map container */
+.map-container {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  aspect-ratio: 16 / 9;
+}
+
+.map-container iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+/* Bento gallery - clickable items for venue showcase */
+.bento--gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 0.5rem;
+}
+
+.bento--gallery .bento__item {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  background: var(--color-surface);
+}
+
+.bento--gallery .bento__item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.bento--gallery .bento__item:hover img {
+  transform: scale(1.05);
+}
+
+.bento--gallery .bento__item--hero {
+  grid-column: 1 / 2;
+  grid-row: 1 / 3;
+  min-height: 400px;
+}
+
+.bento--gallery .bento__item--small {
+  min-height: 195px;
+}
+
+@media (max-width: 768px) {
+  .bento--gallery {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+  .bento--gallery .bento__item--hero {
+    grid-column: 1;
+    grid-row: auto;
+    min-height: 250px;
+  }
+  .bento--gallery .bento__item--small {
+    min-height: 200px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .bento--gallery .bento__item--hero {
+    min-height: 500px;
+  }
+  .bento--gallery .bento__item--small {
+    min-height: 245px;
+  }
+}
+
+/* Bento gallery overlay on hover */
+.bento--gallery .bento__item::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 201, 167, 0.08);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.bento--gallery .bento__item:hover::after {
+  opacity: 1;
+}
+
+/* Gallery lightbox for bento */
+.bento-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: rgba(0, 0, 0, 0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.bento-lightbox--open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.bento-lightbox__img {
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: var(--radius-md);
+  box-shadow: 0 0 60px rgba(0, 201, 167, 0.2);
+}
+
+.bento-lightbox__close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 3rem;
+  height: 3rem;
+  background: var(--color-primary);
+  color: var(--color-text-inverse);
+  border: none;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease;
+}
+
+.bento-lightbox__close:hover {
+  background: #FFFFFF;
+}
+
+.bento-lightbox__nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3rem;
+  height: 3rem;
+  background: rgba(0, 201, 167, 0.3);
+  color: #FFFFFF;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease;
+}
+
+.bento-lightbox__nav:hover {
+  background: var(--color-primary);
+}
+
+.bento-lightbox__prev {
+  left: 1.5rem;
+}
+
+.bento-lightbox__next {
+  right: 1.5rem;
+}
+
+/* Site credit */
+.site-credit {
+  background: var(--color-bg-dark);
+  color: var(--color-text-light);
+}
+
+.site-credit a {
+  color: var(--color-primary);
+}
+
+/* Section subtitle on dark bg */
+.section-subtitle {
+  color: var(--color-text-light);
+}
+
+/* Split layout for hours + map */
+.split--hours {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+@media (max-width: 768px) {
+  .split--hours {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+/* Trackman badge */
+.trackman-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-primary);
+  border-radius: var(--radius-full);
+  padding: 0.5rem 1.25rem;
+  color: var(--color-primary);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.85rem;
+}
+
+.trackman-badge svg {
+  width: 1.2em;
+  height: 1.2em;
+}
