@@ -5,7 +5,7 @@
    ============================================= */
 
 /* --- Google Fonts --- */
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700&family=Inter:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Teko:wght@400;500;600;700&family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700&family=Inter:wght@400;500;600&display=swap');
 
 /* --- Theme Variables --- */
 :root {
@@ -37,37 +37,33 @@
   --color-error: #FF6B6B;
 
   /* Typography */
-  --font-heading: 'Bebas Neue', 'Barlow Condensed', 'Impact', 'Arial Narrow', sans-serif;
+  --font-heading: 'Teko', 'Bebas Neue', 'Barlow Condensed', 'Impact', 'Arial Narrow', sans-serif;
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 /* --- Golf ball dimple texture (CSS pattern) --- */
-.golf-dimple-bg {
-  background-color: var(--color-bg);
-  background-image:
-    radial-gradient(circle at 50% 50%, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.03) 40%, transparent 40%),
-    radial-gradient(circle at 0% 0%, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.03) 40%, transparent 40%),
-    radial-gradient(circle at 100% 0%, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.03) 40%, transparent 40%),
-    radial-gradient(circle at 0% 100%, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.03) 40%, transparent 40%),
-    radial-gradient(circle at 100% 100%, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.03) 40%, transparent 40%);
-  background-size: 30px 30px;
-}
-
-/* Subtle dimple on all dark sections by default */
-.section,
-.section--alt {
-  background-image:
-    radial-gradient(circle, rgba(255,255,255,0.025) 1px, transparent 1px);
-  background-size: 20px 20px;
-}
+/* Visible repeating dimple pattern like a golf ball surface */
+/* Applied to body and sections - uses layered radial gradients */
 
 /* --- Dark theme global overrides --- */
 body {
   background-color: var(--color-bg);
   color: var(--color-text);
   background-image:
-    radial-gradient(circle, rgba(255,255,255,0.02) 1px, transparent 1px);
-  background-size: 20px 20px;
+    radial-gradient(ellipse 12px 12px at 12px 12px, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 50%, transparent 70%),
+    radial-gradient(ellipse 12px 12px at 36px 24px, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 50%, transparent 70%);
+  background-size: 48px 36px;
+}
+
+/* Dimple on all sections - more visible */
+.section,
+.section--alt,
+.footer,
+.cta-banner {
+  background-image:
+    radial-gradient(ellipse 10px 10px at 10px 10px, rgba(255,255,255,0.07) 0%, rgba(255,255,255,0.025) 45%, transparent 70%),
+    radial-gradient(ellipse 10px 10px at 30px 20px, rgba(255,255,255,0.07) 0%, rgba(255,255,255,0.025) 45%, transparent 70%);
+  background-size: 40px 30px;
 }
 
 /* Make headings uppercase and bold for sports feel */
@@ -92,11 +88,14 @@ h1, h2, h3, .hero__heading {
   min-height: 100svh;
 }
 
+/* 1. Hero heading - heavy, bold, flyer-matched with Teko (wider/heavier than Bebas) */
 .hero--image .hero__heading {
-  font-size: clamp(3.2rem, 10vw, 7.5rem);
-  line-height: 1;
-  font-weight: 400; /* Bebas Neue only has 400 weight but renders bold */
-  letter-spacing: 0.04em;
+  font-family: 'Teko', 'Bebas Neue', sans-serif;
+  font-size: clamp(3.5rem, 12vw, 9rem);
+  line-height: 0.95;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-shadow: 0 0 40px rgba(0, 201, 167, 0.3), 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 
 .hero--image .hero__text {
@@ -105,23 +104,38 @@ h1, h2, h3, .hero__heading {
   max-width: 600px;
 }
 
-/* Info band - dark surface with green accents */
+/* 3. Info band - larger titles, bigger icons */
 .info-band--primary {
   background: var(--color-surface);
   border-top: 3px solid var(--color-primary);
   border-bottom: 3px solid var(--color-primary);
+  padding: 2rem 0;
 }
 
 .info-band__icon {
   color: var(--color-primary);
+  background: rgba(0, 201, 167, 0.15);
+  border-radius: 50%;
+  padding: 0.75rem;
+}
+
+.info-band__icon svg {
+  width: 2rem;
+  height: 2rem;
 }
 
 .info-band__title {
   color: #FFFFFF;
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
 }
 
 .info-band__text {
   color: var(--color-text-light);
+  font-size: 0.95rem;
 }
 
 /* Cards on dark background */
@@ -142,8 +156,12 @@ h1, h2, h3, .hero__heading {
   color: var(--color-primary);
 }
 
+/* 4. Card titles - larger and bolder */
 .card__title {
   color: #FFFFFF;
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
 }
 
 /* Icon boxes */
@@ -211,12 +229,14 @@ h1, h2, h3, .hero__heading {
 
 /* CTA banner */
 .cta-banner {
-  background: linear-gradient(135deg, var(--color-secondary-dark), var(--color-secondary));
+  background-color: var(--color-secondary);
+  background-image:
+    linear-gradient(135deg, var(--color-secondary-dark), var(--color-secondary)),
+    radial-gradient(ellipse 10px 10px at 10px 10px, rgba(0,201,167,0.08) 0%, transparent 70%),
+    radial-gradient(ellipse 10px 10px at 30px 20px, rgba(0,201,167,0.08) 0%, transparent 70%);
+  background-size: 100% 100%, 40px 30px, 40px 30px;
   border-top: 3px solid var(--color-primary);
   border-bottom: 3px solid var(--color-primary);
-  background-image:
-    radial-gradient(circle, rgba(0,201,167,0.05) 1px, transparent 1px);
-  background-size: 24px 24px;
 }
 
 .cta-banner h2 {
@@ -256,7 +276,7 @@ h1, h2, h3, .hero__heading {
   fill: var(--color-primary);
 }
 
-/* Accordion / FAQ */
+/* 5. Accordion / FAQ - larger, more readable headings */
 .accordion__trigger {
   color: #FFFFFF;
   display: flex;
@@ -264,6 +284,12 @@ h1, h2, h3, .hero__heading {
   justify-content: space-between;
   width: 100%;
   gap: 1rem;
+  font-size: 1.35rem;
+  font-weight: 600;
+  font-family: var(--font-body);
+  text-transform: none;
+  letter-spacing: 0;
+  line-height: 1.3;
 }
 
 .accordion__trigger svg {
@@ -311,33 +337,50 @@ h1, h2, h3, .hero__heading {
   color: var(--color-text);
 }
 
-/* Buttons */
+/* 6. Form submit button - larger text */
+.form .btn--primary,
+.form button[type="submit"] {
+  font-size: 1.4rem;
+  padding: 1.1rem 2rem;
+  letter-spacing: 0.1em;
+}
+
+/* 2. Buttons - bright and visible, especially on hero */
 .btn--primary {
   background: var(--color-primary);
-  color: var(--color-text-inverse);
+  color: #000000;
   font-family: var(--font-heading);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.08em;
   font-weight: 700;
+  font-size: 1.15rem;
+  padding: 0.9rem 2.2rem;
+  box-shadow: 0 0 20px rgba(0, 201, 167, 0.4);
 }
 
 .btn--primary:hover {
-  background: var(--color-accent);
-  color: var(--color-text-inverse);
+  background: #FFFFFF;
+  color: #000000;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
 }
 
 .btn--secondary {
-  border-color: var(--color-primary);
-  color: var(--color-primary);
+  border: 2px solid #FFFFFF;
+  color: #FFFFFF;
   font-family: var(--font-heading);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.08em;
   font-weight: 700;
+  font-size: 1.15rem;
+  padding: 0.9rem 2.2rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(4px);
 }
 
 .btn--secondary:hover {
   background: var(--color-primary);
-  color: var(--color-text-inverse);
+  border-color: var(--color-primary);
+  color: #000000;
 }
 
 .btn--accent {
