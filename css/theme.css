@@ -5,7 +5,7 @@
    ============================================= */
 
 /* --- Google Fonts --- */
-@import url('https://fonts.googleapis.com/css2?family=Teko:wght@400;500;600;700&family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700&family=Inter:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Russo+One&family=Teko:wght@400;500;600;700&family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700&family=Inter:wght@400;500;600&display=swap');
 
 /* --- Theme Variables --- */
 :root {
@@ -41,29 +41,38 @@
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
-/* --- Golf ball dimple texture (CSS pattern) --- */
-/* Visible repeating dimple pattern like a golf ball surface */
-/* Applied to body and sections - uses layered radial gradients */
+/* --- Golf ball dimple texture --- */
+/* Large dimples like the flyer - only on hero and CTA sections */
 
 /* --- Dark theme global overrides --- */
 body {
   background-color: var(--color-bg);
   color: var(--color-text);
-  background-image:
-    radial-gradient(ellipse 12px 12px at 12px 12px, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 50%, transparent 70%),
-    radial-gradient(ellipse 12px 12px at 36px 24px, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 50%, transparent 70%);
-  background-size: 48px 36px;
 }
 
-/* Dimple on all sections - more visible */
-.section,
-.section--alt,
-.footer,
-.cta-banner {
+/* Large golf ball dimple - matches the flyer's circular pattern overlay */
+/* Uses ::after pseudo-element so it doesn't override background-image on hero */
+.golf-dimples {
+  position: relative;
+}
+
+.golf-dimples::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
   background-image:
-    radial-gradient(ellipse 10px 10px at 10px 10px, rgba(255,255,255,0.07) 0%, rgba(255,255,255,0.025) 45%, transparent 70%),
-    radial-gradient(ellipse 10px 10px at 30px 20px, rgba(255,255,255,0.07) 0%, rgba(255,255,255,0.025) 45%, transparent 70%);
-  background-size: 40px 30px;
+    radial-gradient(circle 20px at 28px 28px, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 50%, transparent 72%),
+    radial-gradient(circle 20px at 84px 56px, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 50%, transparent 72%),
+    radial-gradient(circle 16px at 56px 10px, rgba(255,255,255,0.045) 0%, rgba(255,255,255,0.01) 45%, transparent 68%);
+  background-size: 110px 80px;
+}
+
+/* Ensure content sits above the dimple overlay */
+.golf-dimples > * {
+  position: relative;
+  z-index: 2;
 }
 
 /* Make headings uppercase and bold for sports feel */
@@ -88,13 +97,46 @@ h1, h2, h3, .hero__heading {
   min-height: 100svh;
 }
 
-/* 1. Hero heading - heavy, bold, flyer-matched with Teko (wider/heavier than Bebas) */
+/* Hero button overrides - must match .hero--image specificity from components.css */
+.hero--image .btn--primary {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #FFFFFF;
+  font-size: 1.25rem;
+  padding: 1rem 2.5rem;
+  box-shadow: 0 0 25px rgba(0, 201, 167, 0.5);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+.hero--image .btn--primary:hover {
+  background-color: #FFFFFF;
+  border-color: #FFFFFF;
+  color: #000000;
+  text-shadow: none;
+}
+
+.hero--image .btn--secondary {
+  color: #FFFFFF;
+  border-color: #FFFFFF;
+  background: rgba(0, 0, 0, 0.4);
+  font-size: 1.25rem;
+  padding: 1rem 2.5rem;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+.hero--image .btn--secondary:hover {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #FFFFFF;
+}
+
+/* 1. Hero heading - Russo One matches the wide blocky athletic style on the flyer */
 .hero--image .hero__heading {
-  font-family: 'Teko', 'Bebas Neue', sans-serif;
-  font-size: clamp(3.5rem, 12vw, 9rem);
-  line-height: 0.95;
-  font-weight: 700;
-  letter-spacing: 0.05em;
+  font-family: 'Russo One', 'Teko', 'Impact', sans-serif;
+  font-size: clamp(3rem, 10vw, 7rem);
+  line-height: 1.05;
+  font-weight: 400; /* Russo One only has 400 but renders heavy */
+  letter-spacing: 0.04em;
   text-shadow: 0 0 40px rgba(0, 201, 167, 0.3), 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 
@@ -227,14 +269,15 @@ h1, h2, h3, .hero__heading {
   margin: 0;
 }
 
-/* CTA banner */
+/* CTA banner - with large dimple pattern */
 .cta-banner {
   background-color: var(--color-secondary);
   background-image:
-    linear-gradient(135deg, var(--color-secondary-dark), var(--color-secondary)),
-    radial-gradient(ellipse 10px 10px at 10px 10px, rgba(0,201,167,0.08) 0%, transparent 70%),
-    radial-gradient(ellipse 10px 10px at 30px 20px, rgba(0,201,167,0.08) 0%, transparent 70%);
-  background-size: 100% 100%, 40px 30px, 40px 30px;
+    radial-gradient(circle 18px at 24px 24px, rgba(0,201,167,0.06) 0%, transparent 70%),
+    radial-gradient(circle 18px at 72px 48px, rgba(0,201,167,0.06) 0%, transparent 70%),
+    radial-gradient(circle 14px at 48px 8px, rgba(0,201,167,0.04) 0%, transparent 65%),
+    linear-gradient(135deg, var(--color-secondary-dark), var(--color-secondary));
+  background-size: 96px 72px, 96px 72px, 96px 72px, 100% 100%;
   border-top: 3px solid var(--color-primary);
   border-bottom: 3px solid var(--color-primary);
 }
@@ -345,23 +388,25 @@ h1, h2, h3, .hero__heading {
   letter-spacing: 0.1em;
 }
 
-/* 2. Buttons - bright and visible, especially on hero */
+/* 2. Buttons - high contrast text, bold and visible */
 .btn--primary {
   background: var(--color-primary);
-  color: #000000;
+  color: #FFFFFF;
   font-family: var(--font-heading);
   text-transform: uppercase;
   letter-spacing: 0.08em;
   font-weight: 700;
-  font-size: 1.15rem;
-  padding: 0.9rem 2.2rem;
-  box-shadow: 0 0 20px rgba(0, 201, 167, 0.4);
+  font-size: 1.25rem;
+  padding: 1rem 2.5rem;
+  box-shadow: 0 0 25px rgba(0, 201, 167, 0.5);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
 }
 
 .btn--primary:hover {
   background: #FFFFFF;
   color: #000000;
-  box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.4);
+  text-shadow: none;
 }
 
 .btn--secondary {
@@ -371,16 +416,18 @@ h1, h2, h3, .hero__heading {
   text-transform: uppercase;
   letter-spacing: 0.08em;
   font-weight: 700;
-  font-size: 1.15rem;
-  padding: 0.9rem 2.2rem;
-  background: rgba(255, 255, 255, 0.1);
+  font-size: 1.25rem;
+  padding: 1rem 2.5rem;
+  background: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(4px);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
 }
 
 .btn--secondary:hover {
   background: var(--color-primary);
   border-color: var(--color-primary);
-  color: #000000;
+  color: #FFFFFF;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
 }
 
 .btn--accent {
